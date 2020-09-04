@@ -1,0 +1,13 @@
+---
+neighbors:
+  - name: neighborhood0
+    proxy: proxy0.local.example.com
+    proxyport: 3128
+    destinations:
+      - ".*dilbert.com"
+      - ".*acquisition.gov"
+  - name: neighborhood1
+    proxy: proxy1.local.example.com
+    proxyport: 3128
+    destinations:
+      - ".*local.mydomain.com"

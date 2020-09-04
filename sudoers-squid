@@ -1,0 +1,2 @@
+Defaults:squid !requiretty
+squid ALL=(ALL) NOPASSWD: ALL

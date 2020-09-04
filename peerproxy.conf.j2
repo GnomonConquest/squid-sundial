@@ -1,0 +1,12 @@
+# Rules for second proxies
+
+{% for n in confdict.neighbors %}
+# Begin hand-off to {{ n.name }} as {{ n.proxy }}:{{ n.proxyport }}
+    cache_peer {{ n.proxy }} parent {{ n.proxyport }} 0 no-query no-digest proxy-only
+    {% for destination in n.destinations %}
+        acl {{ n.name }} dstdomain {{ destination }}
+    {% endfor %}
+    cache_peer_access {{ n.proxy }} allow {{ n.name }}
+    cache_peer_access {{ n.proxy }} deny !{{ n.name }}
+#  End  hand-off to {{ n.name }} as {{ n.proxy }}:{{ n.proxyport }}
+{% endfor %}
